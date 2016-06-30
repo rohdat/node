@@ -5,9 +5,9 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	var Quotes = Backbone.collection.extend({
+	var Quotes = Backbone.Collection.extend({
 		model: app.Quote,
-		
+
 	})
 
 	// Create our global collection of **Todos**.
