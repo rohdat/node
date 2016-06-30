@@ -1,0 +1,52 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Health Tracker</title>
+        <!-- <link rel="stylesheet" href="css/screen.css"> -->
+    </head>
+    <body>
+		<section id="foodapp">
+			<input id="new-food" placeholder="What did you eat?" autofocus>
+		<div id="calories-display">
+		<script type="text/template" id="calories-view">
+		<span>You have eaten <strong><%=totalCalories%> </strong>calories!</span>
+		</script>
+		</div>
+
+		<table id="food-table">
+			<thead>
+				<tr>
+					<th>Food</th><th>Calories</th>
+				</tr>
+			</thead>
+		<tr>
+		<script type="text/template" id="food-item-view">
+			<td><%= name %></td><td><%= calories %></td>
+		</script>
+		</tr>
+		</table>
+		<table id="options-table">
+			<thead>
+				<tr>
+					<th>Choose</th>
+				</tr>
+			</thead>
+		<script type="text/template" id="options-view">
+		<tr>
+			<td><%= name %></td>
+		</tr>
+		</script>
+		</table>
+		</section>
+        <script src="js/lib/jquery.min.js"></script>
+        <script src="js/lib/underscore-min.js"></script>
+        <script src="js/lib/backbone-min.js"></script>
+        <script src="js/models/food.js"></script>
+        <script src="js/collections/food-items.js"></script>
+        <script src="js/views/food-view.js"></script>
+        <script src="js/views/app-view.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
