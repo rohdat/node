@@ -1,10 +1,12 @@
 app.controller('meetupController', ['$scope', '$resource', ($scope, $resource) => {
+	var Meetup = $resource('/api/meetups');
 	$scope.meetups = [
 		{ name : "Meetup one"},
 		{ name : "Meetup TWO"}
 	];
 	$scope.createMeetup = function () {
-		$scope.meetups.push({name: $scope.meetupName});
+		var meetup = new Meetup();
+		meetup.name = $scope.meetupName;
 		$scope.meetupName = '';
 	}
 }])

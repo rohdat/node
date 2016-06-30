@@ -1,0 +1,23 @@
+<!DOCTYPE=html>
+<html>
+<head>  
+  <title>Handlebars Test</title>
+  <style type="text/css">
+    body { font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; }
+    .box { box-sizing: border-box; }
+    .header { border-bottom: 1px solid #c0c0c0; padding: .75em 0; margin-bottom: 1.5em; }
+    .main { width: 70%; float: left; }
+    .sidebar { width: 30%; float: right; padding-left: 1.5em; }
+  </style>
+  {{{block head}}}
+</head>  
+
+<h1><a href="/iwillcook">I'm cooking!</a></h1>
+<h1><a href="/iwilleat">I'm hungry!</a></h1>
+Hello! {{name}}!  
+  <div class="box main">
+    {{{body}}}
+  </div>
+
+  
+</html>
