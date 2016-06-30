@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script  src="/js/cats.js"></script>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js"></script>
+		<!-- ko with: currentCat -->
+		    <h2 id="name" data-bind="text: name"></h2>
+		    <h3 id="level" data-bind="text: level"></h3>
+		    <p id="click-count" data-bind="text: clickCount"></p>
+			<img id='cat-image' data-bind="click: $parent.incrementCounter, attr:{src : imgSrc}">
+		<!-- /ko  -->
+		
+		</div>
+		<div id='cat-view'>
+			<ul data-bind="foreach: cats">
+				<button data-bind=" text: name, click: $parent.setCurrentCat" />
+			</ul>
+		</div>
+		<div id='admin-view'></div>
+		<script></script>
+	</body>
+</html>
