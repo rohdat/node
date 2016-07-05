@@ -13,7 +13,8 @@ mongoose.connect( 'mongodb://localhost/library_database' );
 var Quote = new mongoose.Schema({
     quote: String,
     date: Number,
-    likes: Number
+    likes: Number,
+    username: String
 });
 
 //Models

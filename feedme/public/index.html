@@ -6,8 +6,10 @@
 </head>
 <body>
 	<section id="quoteapp">
-		<div class="text-center" id="quote-view">
+		<div id="quote-view">
 		<script type="text/template" id="quote-template">
+		<p class="col-xs-0"><%-username%></p>
+		<div class="text-center" >
 		<h1 id="quote-header"><%-quote%></h1>
 		<h1 class="hide" id="editable"><input id="editable-input"	value="<%-quote%>"></input></h1>
 		<p id="likes"><%-likes%></p>
@@ -15,6 +17,7 @@
 		<button id="upvote">Yay!</button>
 		<button id="downvote">Boo!</button>
 		<button id="delete-quote">X</button>
+		</div>
 		</script>
 		</div>
 		<div class="text-center">

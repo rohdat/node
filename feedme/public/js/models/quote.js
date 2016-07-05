@@ -8,6 +8,7 @@ var app = app || {};
 			quote: "Dummy String",
 			likes: 0,
 			date: Date.now(),
+			username: "__defaultUser__"
 		},
 		idAttribute: "_id",
 		parseDate: function() {
