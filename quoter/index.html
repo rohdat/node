@@ -2,15 +2,30 @@
 <html>
 <head>
 	<title>Today's quote</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+	<script src="public/js/lib/jquery.min.js"></script>
+	<script src="public/js/lib/bootstrap.min.js"></script>
+	<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="public/js/app.js"></script>
+	<link rel="stylesheet" href="public/styles/bootstrap.min.css">
+	</style>
 </head>
 <body>
-	<input data-bind='value: quoteInput' placeholder="Enter new quote" />
-	<button data-bind='click: newQuote'>Add quote</button>
-	<!-- <p data-bind="text : newQuote"></p> -->
-	<div data-bind="foreach: quoteArray">
-		<p data-bind="text: quote"></p>
-	</div>
+	<section id="quoteapp">
+		<br>
+		<br>
+		<div class="text-center">
+		<input id="new-quote" placeholder="What is it now?" />
+		<div id="quote-view">Quote goes here</div>
+		</div>
+	</section>
+	<script id="quote-view-template" type="text/x-handlebars-template">
+		<div class="todaysquote" id="{{id}}">
+		<h1>{{quote}}</h1>
+		<span id="delete-indicator" class='hide'>X</span>
+		<p>{{likes}}</p>
+		<button id="upvote">Yay!</button>
+		<button id="downvote">Boo!</button>
+		</div> 
+	</script>
 </body>
 </html>
