@@ -35,6 +35,21 @@ jQuery(function($) {
 				var store = localStorage.getItem(namespace);
 				return (store && JSON.parse(store)) || [];
 			}
+		},
+		create: function (data) {
+			$.ajax( {
+				type: "POST",
+				url: "/api/quotes",
+				data: JSON.stringify(data),
+				success: function (data) {
+					console.log("write to DB: "+JSON.stringify(data));
+				},
+				error: function (msg, url, line) {
+                        alert("error trapped in error: function(msg, url, line)");
+                        alert("msg = " + msg + ", url = " + url + ", line = " + line);
+
+                    }
+			});
 		}
 	};
 	var App = {
@@ -50,15 +65,13 @@ jQuery(function($) {
 		bindEvents: function () {
 			console.log("BindEvents");
 			$('#new-quote').on('keyup', this.create.bind(this));
-			$('#quote-view').on('mouseover', this.showDel.bind(this));
-			$('#quote-view').on('click','#delete-indicator', this.delete.bind(this));
-			// $('#quote-view').on('mouseout', '.todaysquote', this.showDel.bind(this));
 			$('#quote-view').on('click', '#upvote', this.vote.bind(this));
 			$('#quote-view').on('click', '#downvote', this.vote.bind(this));
 		},
 		render: function () {
 			console.log("Render");
 			$('#quote-view').html(this.quoteTemplate(this.getAQuote()));
+
 			util.store('quotes-store', this.quotes);
 		},
 		create: function (e) {
@@ -76,6 +89,14 @@ jQuery(function($) {
 				quote: val,
 				likes: 0
 			});
+			util.create({
+				id: util.uuid(),
+				quote: val,
+				username: "Mr Meaowington",
+				date: Date.now(),
+				likes: 0
+			});
+
 			// localStorage.setItem(id, JSON.stringify(val));
 			$input.val('');
 			console.log("Create");
@@ -104,13 +125,22 @@ jQuery(function($) {
 		vote: function(el) {
 			var myid = $(el.target).parent().attr('id');
 			var updown = $(el.target).attr('id') === 'upvote' ? 1 : -1;
+			if (updown == 1) {
+				$('#upvote').toggleClass('active');
+				$('#downvote').removeClass('active');
+				console.log($('#upvote').hasClass('active'));
+			} else if (updown == -1) {
+				$('#upvote').removeClass('active');
+				$('#downvote').toggleClass('active');
+				console.log($('#downvote').hasClass('active'));
+			}
 			var idx = this.indexFromEl(myid);
 			if (!idx) { console.log("Element not found! id: "+myid);return;}
 			var myquote = this.quotes[idx];
 			myquote.likes += updown;
 			this.quotes[idx] = myquote;
-			this.render();
-			console.log('Upvote: '+myid+" quote: "+myquote.quote);
+			// this.render();
+			console.log((updown == 1? 'Upvote: ': 'Downvote: ')+myid+" quote: "+myquote.quote);
 		},
 		showDel: function (el) {
 			$(el.target).siblings('#delete-indicator').toggleClass('hide');

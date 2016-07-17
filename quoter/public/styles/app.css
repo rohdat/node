@@ -1,0 +1,18 @@
+/*app.css*/
+.todaysquote {
+	border: 1px transparent solid;
+	border-radius: 10px;
+	margin-top: 10px;
+	text-align: center;
+	color: white;
+	filter: blur(100px);
+	filter: opacity(100%);
+	box-shadow: 0 0 20px #fff;
+	padding: 20px;
+}
+
+.btn {
+	background-color: rgba(0,0,0, .025);
+	color:  white;
+	border: transparent;
+}

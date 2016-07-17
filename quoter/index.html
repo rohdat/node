@@ -2,14 +2,18 @@
 <html>
 <head>
 	<title>Today's quote</title>
-	<script src="public/js/lib/jquery.min.js"></script>
-	<script src="public/js/lib/bootstrap.min.js"></script>
-	<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script type="text/javascript" src="public/js/app.js"></script>
-	<link rel="stylesheet" href="public/styles/bootstrap.min.css">
+	<script src="/js/lib/jquery.min.js"></script>
+	<script src="scripts/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+	<script src="scripts/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<link rel="stylesheet" href="/styles/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles/app.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+
 	</style>
 </head>
-<body>
+<body background="images/bg1.jpg">
 	<section id="quoteapp">
 		<br>
 		<br>
@@ -18,14 +22,13 @@
 		<div id="quote-view">Quote goes here</div>
 		</div>
 	</section>
-	<script id="quote-view-template" type="text/x-handlebars-template">
-		<div class="todaysquote" id="{{id}}">
+	<script id="quote-view-template" type="text/x-handlebars-template" class="container">
+		<div class="todaysquote container" id="{{id}}">
 		<h1>{{quote}}</h1>
-		<span id="delete-indicator" class='hide'>X</span>
-		<p>{{likes}}</p>
-		<button id="upvote">Yay!</button>
-		<button id="downvote">Boo!</button>
-		</div> 
+		<span id="delete-indicator" class='hide '>X</span>
+        <div class="btn btn-default col-xs-6" id="upvote">Like  <span class="glyphicon glyphicon-thumbs-up"></span></div>
+		<div class="btn btn-default col-xs-6" id="downvote">Dislike  <span class="glyphicon glyphicon-thumbs-down"></span></div>
+		</div>
 	</script>
 </body>
 </html>

@@ -27,9 +27,11 @@ var QuoteModel = mongoose.model( 'Quote', Quote );
 // app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 app.use(express.static(__dirname+'/public'));
+app.use('/scripts', express.static(__dirname+'/node_modules'));
+app.use('/fonts', express.static(__dirname+'/node_modules/bootsrap/dist/fonts'));
 app.use(bodyParser());
 app.get('/', function (req,res) {
-	res.send("Hello from feedme");
+	res.sendFile(__dirname+"/index.html");
 });
 
 app.get('/api/quotes', function (req, res){
@@ -42,12 +44,13 @@ app.get('/api/quotes', function (req, res){
 		}
 	})
 	res.send("Hello from api");
-})
+});
 
 app.post('/api/quotes', function (req, res){
 	var quote = new QuoteModel({
 		quote: req.body.quote,
 		date: req.body.date,
+		username: req.body.username,
 		likes: req.body.likes,
 	});
 	return quote.save((err) => {
