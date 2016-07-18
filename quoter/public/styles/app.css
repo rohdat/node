@@ -16,3 +16,8 @@
 	color:  white;
 	border: transparent;
 }
+
+.signup, .login {
+	float:right;
+	text-align: center;
+}
